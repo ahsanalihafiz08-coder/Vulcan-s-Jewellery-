@@ -1,0 +1,6 @@
+{
+  "name": "Vulcan's Jewellery",
+  "description": "Discover elegant jewellery at Vulcan's Jewellery. Explore beautiful collections and visit our flagship boutique at Souq Al Watiya.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

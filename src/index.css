@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pearl-ivory: #FBF8F1;
+  --color-champagne: #C9A45C;
+  --color-champagne-light: #E4D3AB;
+  --color-champagne-dark: #A6833D;
+  --color-sapphire: #1E4F8F;
+  --color-sapphire-dark: #143868;
+  --color-sapphire-light: #2A6BB8;
+  --color-burgundy: #8A4050;
+  --color-burgundy-light: #A45366;
+  --color-warm-sand: #E9DDCC;
+  --color-soft-beige: #F3ECE2;
+  --color-deep-cocoa: #493B35;
+  --color-deep-cocoa-light: #6E5C54;
+  
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-playfair: 'Playfair Display', serif;
+  --font-manrope: 'Manrope', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: #FBF8F1;
+    color: #493B35;
+    font-family: 'Manrope', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-heading {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+/* Custom subtle luxury utilities */
+.gold-shimmer {
+  background: linear-gradient(90deg, rgba(201, 164, 92, 0) 0%, rgba(201, 164, 92, 0.4) 50%, rgba(201, 164, 92, 0) 100%);
+  background-size: 200% 100%;
+  animation: shimmerSweep 6s infinite ease-in-out;
+}
+
+@keyframes shimmerSweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.gold-border-glow {
+  box-shadow: 0 0 15px rgba(201, 164, 92, 0.15);
+}
+
+.subtle-glass {
+  background: rgba(251, 248, 241, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Continuous smooth linear auto-scroll marquee */
+@keyframes marqueeLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 45s linear infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 48s linear infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.animate-marquee-left-fast {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 36s linear infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Fluid 60fps rendering pipeline optimizations for desktop screens */
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.transform-gpu {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Hardware-accelerate layout rendering for long product catalog grids and carousels */
+#extended-catalog .grid > div,
+#featured-highlights .grid > div,
+#hero-ring-carousel,
+.gallery-continuous-swiper,
+.ring-continuous-swiper {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Disable dynamic heavy backdrop-filters during active scroll events to maintain 60fps */
+body.is-scrolling [class*="backdrop-blur"],
+body.is-scrolling header,
+body.is-scrolling .subtle-glass {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Disable hover recalculations across long catalog grids during active scroll */
+body.is-scrolling #extended-catalog .group,
+body.is-scrolling #featured-highlights .group {
+  pointer-events: none !important;
+}
+
+/* Swiper continuous smooth linear auto-scroll */
+.gallery-continuous-swiper .swiper-wrapper,
+.ring-continuous-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
